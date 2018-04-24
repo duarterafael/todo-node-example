@@ -1,0 +1,42 @@
+-- Database: todos-dev
+
+-- DROP DATABASE "todos-dev";
+
+CREATE DATABASE "todos-dev"
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Portuguese_Brazil.1252'
+    LC_CTYPE = 'Portuguese_Brazil.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+CREATE SEQUENCE public."Todo_id_seq"
+    INCREMENT 1
+    START 2
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public."Todo_id_seq"
+    OWNER TO postgres;
+
+-- Table: public."Todo"
+
+-- DROP TABLE public."Todo";
+
+CREATE TABLE public."Todo"
+(
+    id bigint NOT NULL DEFAULT nextval('"Todo_id_seq"'::regclass),
+    text text COLLATE pg_catalog."default",
+    "createdAt" date,
+    "updatedAt" date,
+    CONSTRAINT "Todo_pkey" PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public."Todo"
+    OWNER to postgres;

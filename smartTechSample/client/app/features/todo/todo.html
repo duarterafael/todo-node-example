@@ -1,0 +1,30 @@
+<div class="container">
+
+	<div class="jumbotron text-center">
+		<h1>Text Count <span class="label label-info">{{ todo.todos.length }}</span></h1>
+	</div>
+
+	<div class="todo-list row">
+		<div class="col-sm-4 col-sm-offset-4">
+
+			<div class="checkbox" ng-repeat="todoObj in todo.todos">
+				<label>
+					<input type="checkbox" ng-click="todo.deleteTodo(todoObj.id)"> {{ todoObj.text }}
+				</label>
+			</div>
+
+		</div>
+	</div>
+	
+	<div class="todo-container__form row">
+		<div class="col-sm-8, col-sm-offset-2, text-center">
+			<form>
+				<div class="form-group">
+					<input type="text" class="form-control input-lg text-center" placeholder="Enter with a text" ng-model="todo.formData.text">
+				</div>
+
+				<button type="submit" class="btn btn-primary btn-lg" ng-click="todo.createTodo()">Add</button>
+			</form>
+		</div>
+	</div>
+</div>
